@@ -18,7 +18,7 @@ const FAQs = () => {
         collapsible
         className="flex flex-col gap-6 mt-6 items-center justify-center w-full"
       >
-        {Faqs.map((faq) => {
+        {Faqs.map((faq: any) => {
           return (
             <AccordionItem
               value={faq.id.toString()}
@@ -33,12 +33,12 @@ const FAQs = () => {
                   <div className="flex flex-col items-start justify-center gap-[10px]">
                     <p>{faq.answer.heading && faq.answer.heading}</p>
                     <ul className="list-decimal flex text-[16px] flex-col gap-5">
-                      {faq.answer.points.map((point, index) => (
+                      {faq.answer.points.map((point: string, index: number) => (
                         <li
                           key={index}
                           // className="before:content-['\2022'] before:text-black before:font-bold before:inline-block before:w-[1em] before:ml-[-1em]"
                         >
-                          {point.split("-").map((segment, i, arr) => (
+                          {point.split("-").map((segment: string, i: number) => (
                             <span key={i}>
                               {i === 0 ? (
                                 <span className="font-semibold">{segment}</span>

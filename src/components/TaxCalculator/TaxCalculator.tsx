@@ -62,7 +62,7 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Purchase Price"
-              className="pl-8 pr-3 py-[12px] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+              className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
         </div>
@@ -80,7 +80,7 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Sale Price"
-              className="pl-8 pr-3 py-[12px] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+              className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
         </div>
@@ -102,7 +102,7 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Expenses"
-              className="pl-8 pr-3 py-[12px] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+              className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ const TaxCalculator = () => {
           <select
             name="fy"
             id="years"
-            className="py-[17px] text-start px-4 w-full rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+            className="py-[17px] text-start px-4 outline-none w-full rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
           >
             <option value="24">$0 - $18,200</option>
             <option value="24">$18,201 - $45,000</option>
