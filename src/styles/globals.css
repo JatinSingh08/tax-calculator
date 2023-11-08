@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gray-1: #0F1629;
+  --gray-2: #3E424A;
+  --signIn-btn: #0052FE;
+  --body-bg: #EFF2F5;
+  --border: rgba(201, 207, 221, 0.60);
+  --btn-bg:rgba(0, 82, 254, 0.00);
+  --green-1: #0FBA83;
+  --primary-dark-blue: #0141CF;
+  font-family: 'Inter', 'sans-serif';
+}
+
+.signIn-btn {
+  border: 1px solid #0052FE;
+}
+
+.navbar {
+  border-bottom: 1px solid #DEDFE2;
+/* box-shadow1 */
+  box-shadow: 0px 0px 12px 0px rgba(16, 38, 73, 0.06);
+}
+.border-bottom {
+  border-bottom: 1px solid rgba(201, 207, 221, 0.60);
+}
