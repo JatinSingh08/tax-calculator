@@ -5,14 +5,14 @@ import useTaxCalculation from "@/lib/useTaxCalculation";
 
 const TaxCalculator = () => {
   const [inputs, setInputs] = useState({
-    purchase_price: "",
-    sale_price: "",
-    expenses: "",
+    purchase_price: 0,
+    sale_price: 0,
+    expenses: 0,
     annual_income: "0-18200",
     term_selected: "short_term",
   });
 
-  const { capitalGainsAmount, discount, netCapitalGains, taxTobePaid } = useTaxCalculation(inputs);
+  const { capitalGainsAmount, discount, netCapitalGains, taxRate, taxToBePaid } = useTaxCalculation(inputs);
   const formattedNetCapitalGains = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -40,7 +40,6 @@ const TaxCalculator = () => {
             className="py-[17px] outline-none w-full text-start px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-base md:text-[18px] font-medium flex items-center justify-center "
           >
             <option value="24">FY 2023-24</option>
-            <option value="23">FY 2022-23</option>
           </select>
         </div>
         <div className="flex-col md:flex-row flex items-start md:items-center justify-center gap-3 w-full">
@@ -56,7 +55,6 @@ const TaxCalculator = () => {
             className="py-[17px] text-start outline-none px-4 w-full rounded-[8px] bg-[#EFF2F5] cursor-pointer text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
           >
             <option value="Australia">🌍 Australia</option>
-            <option value="us">🌍 US</option>
           </select>
         </div>
       </div>
@@ -83,7 +81,7 @@ const TaxCalculator = () => {
               onChange={(e) =>
                 setInputs((prevInputs) => ({
                   ...prevInputs,
-                  purchase_price: e.target.value,
+                  purchase_price: Number(e.target.value),
                 }))
               }
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
@@ -107,7 +105,7 @@ const TaxCalculator = () => {
               onChange={(e) =>
                 setInputs((prevInputs) => ({
                   ...prevInputs,
-                  sale_price: e.target.value,
+                  sale_price: Number(e.target.value),
                 }))
               }
               className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
@@ -135,7 +133,7 @@ const TaxCalculator = () => {
               onChange={(e) =>
                 setInputs((prevInputs) => ({
                   ...prevInputs,
-                  expenses: e.target.value,
+                  expenses: Number(e.target.value),
                 }))
               }
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
@@ -151,44 +149,50 @@ const TaxCalculator = () => {
             Investment Type
           </label>
           <div className="flex items-center justify-center gap-[10px] w-full">
-            <button
-              className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
-                inputs.term_selected === "short_term" &&
-                "rounded-[8px] selected_btn"
-              }`}
-              onClick={() =>
-                setInputs((prevInputs) => ({
-                  ...prevInputs,
-                  term_selected: "short_term",
-                }))
-              }
-            >
-              Short Term
-              {inputs.term_selected === "short_term" && (
-                <span>
-                  <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
-                </span>
-              )}
-            </button>
-            <button
-              className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
-                inputs.term_selected === "long_term" &&
-                "rounded-[8px] selected_btn"
-              }`}
-              onClick={() =>
-                setInputs((prevInputs) => ({
-                  ...prevInputs,
-                  term_selected: "long_term",
-                }))
-              }
-            >
-              Long Term
-              {inputs.term_selected === "long_term" && (
-                <span>
-                  <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
-                </span>
-              )}
-            </button>
+            <div className="w-full">
+              <button
+                className={`px-3 rounded-[8px] relative bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
+                  inputs.term_selected === "short_term" &&
+                  "rounded-[8px] selected_btn"
+                }`}
+                onClick={() =>
+                  setInputs((prevInputs) => ({
+                    ...prevInputs,
+                    term_selected: "short_term",
+                  }))
+                }
+              >
+                Short Term
+                {inputs.term_selected === "short_term" && (
+                  <span>
+                    <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                  </span>
+                )}
+              </button>
+              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">{"< 12 months"}</p>
+            </div>
+            <div className="w-full">
+              <button
+                className={`px-3 rounded-[8px] relative bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
+                  inputs.term_selected === "long_term" &&
+                  "rounded-[8px] selected_btn"
+                }`}
+                onClick={() =>
+                  setInputs((prevInputs) => ({
+                    ...prevInputs,
+                    term_selected: "long_term",
+                  }))
+                }
+              >
+                Long Term
+                {inputs.term_selected === "long_term" && (
+                  <span>
+                    <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                  </span>
+                )}
+              </button>
+              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">{"> 12 months"}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -220,7 +224,7 @@ const TaxCalculator = () => {
             <option value="180001+">$180,001+</option>
           </select>
         </div>
-        <div className="flex-col flex items-start justify-center gap-3 w-full">
+        <div className="flex-col flex items-start justify-center mt-8 gap-3 w-full">
           <label
             htmlFor="years"
             className="text-[--gray-1] text-[15px] font-normal leading-6 text-start"
@@ -228,7 +232,7 @@ const TaxCalculator = () => {
             Tax Rate
           </label>
           <p className="text-[--gray-1] text-[15px] font-normal leading-6">
-            {taxTobePaid?.tax}
+            {taxRate?.tax}
           </p>
         </div>
       </div>
@@ -294,7 +298,7 @@ const TaxCalculator = () => {
             The tax you need to pay*
           </p>
           <p className="text-[--primary-dark-blue] text-2xl font-bold text-center">
-            $ 812.5
+            $ {taxToBePaid}
           </p>
         </div>
       </div>
