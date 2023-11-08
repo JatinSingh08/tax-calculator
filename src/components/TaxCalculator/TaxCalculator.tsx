@@ -1,15 +1,18 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import CheckIcon from '@/assets/check-icon.svg';
+import CheckIcon from "@/assets/check-icon.svg";
+import useTaxCalculation from "@/lib/useTaxCalculation";
 
 const TaxCalculator = () => {
   const [inputs, setInputs] = useState({
     purchase_price: "",
     sale_price: "",
     expenses: "",
-    annual_income: "",
-    term_selected: "short_term"
+    annual_income: "0-18200",
+    term_selected: "short_term",
   });
+
+  const { capitalGainsAmount, discount, netCapitalGains, taxTobePaid } = useTaxCalculation(inputs);
 
   return (
     <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] bg-white rounded-2xl flex flex-col items-center justify-center">
@@ -53,10 +56,8 @@ const TaxCalculator = () => {
         </div>
       </div>
 
-
       {/* border  */}
       <div className="w-full h-[1px] bg-[--border] my-[28px]"></div>
-
 
       {/* Purchase Price & Sales Price */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
@@ -74,7 +75,12 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Purchase Price"
-              onChange={(e) => setInputs(prevInputs => ({...prevInputs, purchase_price: e.target.value}))}
+              onChange={(e) =>
+                setInputs((prevInputs) => ({
+                  ...prevInputs,
+                  purchase_price: e.target.value,
+                }))
+              }
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
@@ -93,13 +99,17 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Sale Price"
-              onChange={(e) => setInputs(prevInputs => ({...prevInputs, sale_price: e.target.value}))}
+              onChange={(e) =>
+                setInputs((prevInputs) => ({
+                  ...prevInputs,
+                  sale_price: e.target.value,
+                }))
+              }
               className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
         </div>
       </div>
-
 
       {/* Expenses & Term plan  */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
@@ -117,7 +127,12 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Expenses"
-              onChange={(e) => setInputs(prevInputs => ({...prevInputs, expenses: e.target.value}))}
+              onChange={(e) =>
+                setInputs((prevInputs) => ({
+                  ...prevInputs,
+                  expenses: e.target.value,
+                }))
+              }
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
@@ -131,44 +146,47 @@ const TaxCalculator = () => {
             Investment Type
           </label>
           <div className="flex items-center justify-center gap-[10px] w-full">
-            <button 
-            className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${inputs.term_selected === "short_term" && "rounded-[8px] selected_btn"}`}
-            onClick={() => setInputs(prevInputs => ({...prevInputs, term_selected: "short_term"}))}
-
+            <button
+              className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
+                inputs.term_selected === "short_term" &&
+                "rounded-[8px] selected_btn"
+              }`}
+              onClick={() =>
+                setInputs((prevInputs) => ({
+                  ...prevInputs,
+                  term_selected: "short_term",
+                }))
+              }
             >
               Short Term
-              {
-                inputs.term_selected === "short_term" && (
-                  <span>
-                    <Image 
-                    alt="check_icon"
-                    src={CheckIcon}
-                    className="w-6 h-6"
-                    />
-                  </span>
-                )
-              }
+              {inputs.term_selected === "short_term" && (
+                <span>
+                  <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                </span>
+              )}
             </button>
-            <button className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${inputs.term_selected === "long_term" && "rounded-[8px] selected_btn"}`}
-            onClick={() => setInputs(prevInputs => ({...prevInputs, term_selected: "long_term"}))}
+            <button
+              className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${
+                inputs.term_selected === "long_term" &&
+                "rounded-[8px] selected_btn"
+              }`}
+              onClick={() =>
+                setInputs((prevInputs) => ({
+                  ...prevInputs,
+                  term_selected: "long_term",
+                }))
+              }
             >
               Long Term
-              {
-                inputs.term_selected === "long_term" && (
-                  <span>
-                    <Image 
-                    alt="check_icon"
-                    src={CheckIcon}
-                    className="w-6 h-6"
-                    />
-                  </span>
-                )
-              }
+              {inputs.term_selected === "long_term" && (
+                <span>
+                  <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                </span>
+              )}
             </button>
           </div>
         </div>
       </div>
-
 
       {/* Annaul Income & Tax Rate  */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
@@ -183,7 +201,12 @@ const TaxCalculator = () => {
             name="fy"
             id="years"
             className="py-[17px] text-start px-4 outline-none w-full rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
-            onClick={() => setInputs(prevInputs => ({...prevInputs, annual_income: "short_term"}))}
+            onChange={(e) =>
+              setInputs((prevInputs) => ({
+                ...prevInputs,
+                annual_income: e.target.value,
+              }))
+            }
           >
             <option value="0-18200">$0 - $18,200</option>
             <option value="18201-45000">$18,201 - $45,000</option>
@@ -200,54 +223,56 @@ const TaxCalculator = () => {
             Tax Rate
           </label>
           <p className="text-[--gray-1] text-[15px] font-normal leading-6">
-            $ 5,902 + 32.5% of excess over $45,001{" "}
+            {taxTobePaid?.tax}
           </p>
         </div>
       </div>
 
-
       {/* Gain Amount & Long term gains  */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
-        <div className="flex-col flex items-start justify-center gap-3 w-full">
-          <label
-            htmlFor="years"
-            className="text-[--gray-1] text-[15px] font-normal leading-6"
-          >
-            Capital gains amount
-          </label>
-          <div className="relative w-full">
-            <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
-              $
-            </span>
-            <input
-              type="number"
-              placeholder="Capital Gains"
-              onChange={(e) => setInputs(prevInputs => ({...prevInputs, purchase_price: e.target.value}))}
-              className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
-            />
+      {
+        inputs.term_selected === "long_term" &&
+      (  <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+          <div className="flex-col flex items-start justify-center gap-3 w-full">
+            <label
+              htmlFor="years"
+              className="text-[--gray-1] text-[15px] font-normal leading-6"
+            >
+              Capital gains amount
+            </label>
+            <div className="relative w-full">
+              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                $
+              </span>
+              <input
+                type="number"
+                placeholder="Capital Gains"
+                value={capitalGainsAmount}
+                className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex-col flex items-start justify-center gap-3 w-full">
-          <label
-            htmlFor="years"
-            className="text-[--gray-1] text-[15px] font-normal leading-6"
-          >
-            Discount for long term gains
-          </label>
-          <div className="relative w-full">
-            <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
-              $
-            </span>
-            <input
-              type="number"
-              placeholder="Long Term Gains"
-              onChange={(e) => setInputs(prevInputs => ({...prevInputs, sale_price: e.target.value}))}
-              className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
-            />
+          <div className="flex-col flex items-start justify-center gap-3 w-full">
+            <label
+              htmlFor="years"
+              className="text-[--gray-1] text-[15px] font-normal leading-6"
+            >
+              Discount for long term gains
+            </label>
+            <div className="relative w-full">
+              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                $
+              </span>
+              <input
+                type="number"
+                placeholder="Long Term Gains"
+                value={discount}
+                className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+              />
+            </div>
           </div>
-        </div>
-      </div>
-
+        </div>)
+        
+      }
 
       {/* Capital gains & Tax results */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
