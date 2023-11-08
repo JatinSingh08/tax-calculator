@@ -53,8 +53,10 @@ const TaxCalculator = () => {
         </div>
       </div>
 
+
       {/* border  */}
       <div className="w-full h-[1px] bg-[--border] my-[28px]"></div>
+
 
       {/* Purchase Price & Sales Price */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
@@ -72,6 +74,7 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Purchase Price"
+              onChange={(e) => setInputs(prevInputs => ({...prevInputs, purchase_price: e.target.value}))}
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
@@ -90,11 +93,13 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Sale Price"
+              onChange={(e) => setInputs(prevInputs => ({...prevInputs, sale_price: e.target.value}))}
               className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
         </div>
       </div>
+
 
       {/* Expenses & Term plan  */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
@@ -112,6 +117,7 @@ const TaxCalculator = () => {
             <input
               type="number"
               placeholder="Expenses"
+              onChange={(e) => setInputs(prevInputs => ({...prevInputs, expenses: e.target.value}))}
               className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
             />
           </div>
@@ -163,6 +169,7 @@ const TaxCalculator = () => {
         </div>
       </div>
 
+
       {/* Annaul Income & Tax Rate  */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
         <div className="flex-col flex items-start justify-center gap-3 w-full">
@@ -176,12 +183,13 @@ const TaxCalculator = () => {
             name="fy"
             id="years"
             className="py-[17px] text-start px-4 outline-none w-full rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+            onClick={() => setInputs(prevInputs => ({...prevInputs, annual_income: "short_term"}))}
           >
-            <option value="24">$0 - $18,200</option>
-            <option value="24">$18,201 - $45,000</option>
-            <option value="24">$45,001 - $120,000</option>
-            <option value="24">$120,001 - $180,000</option>
-            <option value="23">$180,001+</option>
+            <option value="0-18200">$0 - $18,200</option>
+            <option value="18201-45000">$18,201 - $45,000</option>
+            <option value="45001-120000">$45,001 - $120,000</option>
+            <option value="120001-180000">$120,001 - $180,000</option>
+            <option value="180001+">$180,001+</option>
           </select>
         </div>
         <div className="flex-col flex items-start justify-center gap-3 w-full">
@@ -196,6 +204,50 @@ const TaxCalculator = () => {
           </p>
         </div>
       </div>
+
+
+      {/* Gain Amount & Long term gains  */}
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+        <div className="flex-col flex items-start justify-center gap-3 w-full">
+          <label
+            htmlFor="years"
+            className="text-[--gray-1] text-[15px] font-normal leading-6"
+          >
+            Capital gains amount
+          </label>
+          <div className="relative w-full">
+            <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+              $
+            </span>
+            <input
+              type="number"
+              placeholder="Capital Gains"
+              onChange={(e) => setInputs(prevInputs => ({...prevInputs, purchase_price: e.target.value}))}
+              className="pl-8 pr-3 py-[12px] outline-none focus-visible:outline-[#0052FE] border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+            />
+          </div>
+        </div>
+        <div className="flex-col flex items-start justify-center gap-3 w-full">
+          <label
+            htmlFor="years"
+            className="text-[--gray-1] text-[15px] font-normal leading-6"
+          >
+            Discount for long term gains
+          </label>
+          <div className="relative w-full">
+            <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+              $
+            </span>
+            <input
+              type="number"
+              placeholder="Long Term Gains"
+              onChange={(e) => setInputs(prevInputs => ({...prevInputs, sale_price: e.target.value}))}
+              className="pl-8 pr-3 py-[12px] focus-visible:outline-[#0052FE] outline-none border w-full text-start px-4 rounded-[8px] bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+            />
+          </div>
+        </div>
+      </div>
+
 
       {/* Capital gains & Tax results */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
