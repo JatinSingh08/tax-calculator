@@ -13,7 +13,12 @@ const TaxCalculator = () => {
   });
 
   const { capitalGainsAmount, discount, netCapitalGains, taxTobePaid } = useTaxCalculation(inputs);
-
+  const formattedNetCapitalGains = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(netCapitalGains);
+  
+  
   return (
     <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] bg-white rounded-2xl flex flex-col items-center justify-center">
       <p className="text-[--gray-1] text-center text-2xl md:text-[40px] font-bold leading-[34px]">
@@ -281,7 +286,7 @@ const TaxCalculator = () => {
             Net Capital gains tax amount
           </p>
           <p className="text-[--green-1] text-2xl font-bold text-center">
-            $ 2,500
+            {formattedNetCapitalGains}
           </p>
         </div>
         <div className="flex-col flex items-center justify-center w-full bg-[#EBF2FF] h-[97px] px-2 rounded-[8px] gap-2">
