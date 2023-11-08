@@ -1,6 +1,16 @@
-import React from "react";
+import Image from "next/image";
+import React, { useState } from "react";
+import CheckIcon from '@/assets/check-icon.svg';
 
 const TaxCalculator = () => {
+  const [inputs, setInputs] = useState({
+    purchase_price: "",
+    sale_price: "",
+    expenses: "",
+    annual_income: "",
+    term_selected: "short_term"
+  });
+
   return (
     <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] bg-white rounded-2xl flex flex-col items-center justify-center">
       <p className="text-[--gray-1] text-center text-2xl md:text-[40px] font-bold leading-[34px]">
@@ -19,7 +29,7 @@ const TaxCalculator = () => {
           <select
             name="fy"
             id="years"
-            className="py-[17px] outline-none w-full text-start px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
+            className="py-[17px] outline-none w-full text-start px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-base md:text-[18px] font-medium flex items-center justify-center "
           >
             <option value="24">FY 2023-24</option>
             <option value="23">FY 2022-23</option>
@@ -115,11 +125,39 @@ const TaxCalculator = () => {
             Investment Type
           </label>
           <div className="flex items-center justify-center gap-[10px] w-full">
-            <button className="px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium">
+            <button 
+            className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${inputs.term_selected === "short_term" && "rounded-[8px] selected_btn"}`}
+            onClick={() => setInputs(prevInputs => ({...prevInputs, term_selected: "short_term"}))}
+
+            >
               Short Term
+              {
+                inputs.term_selected === "short_term" && (
+                  <span>
+                    <Image 
+                    alt="check_icon"
+                    src={CheckIcon}
+                    className="w-6 h-6"
+                    />
+                  </span>
+                )
+              }
             </button>
-            <button className="px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium">
+            <button className={`px-3 rounded-[8px] bg-[btn-bg] h-12 w-full flex items-center justify-center gap-1 text-[--gray-2] border-[--gray-2] border text-base md:text-[18px] font-medium ${inputs.term_selected === "long_term" && "rounded-[8px] selected_btn"}`}
+            onClick={() => setInputs(prevInputs => ({...prevInputs, term_selected: "long_term"}))}
+            >
               Long Term
+              {
+                inputs.term_selected === "long_term" && (
+                  <span>
+                    <Image 
+                    alt="check_icon"
+                    src={CheckIcon}
+                    className="w-6 h-6"
+                    />
+                  </span>
+                )
+              }
             </button>
           </div>
         </div>
@@ -153,20 +191,29 @@ const TaxCalculator = () => {
           >
             Tax Rate
           </label>
-          <p className="text-[--gray-1] text-[15px] font-normal leading-6">$ 5,902 + 32.5% of excess over $45,001 </p>
+          <p className="text-[--gray-1] text-[15px] font-normal leading-6">
+            $ 5,902 + 32.5% of excess over $45,001{" "}
+          </p>
         </div>
       </div>
-
 
       {/* Capital gains & Tax results */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
         <div className="flex-col flex items-center justify-center w-full bg-[#EBF9F4] h-[97px] px-2 rounded-[8px] gap-2">
-          <p className="text-[--gray-1] text-base font-medium">Net Capital gains tax amount</p>
-          <p className="text-[--green-1] text-2xl font-bold text-center">$ 2,500</p>
+          <p className="text-[--gray-1] text-base font-medium">
+            Net Capital gains tax amount
+          </p>
+          <p className="text-[--green-1] text-2xl font-bold text-center">
+            $ 2,500
+          </p>
         </div>
         <div className="flex-col flex items-center justify-center w-full bg-[#EBF2FF] h-[97px] px-2 rounded-[8px] gap-2">
-          <p className="text-[--gray-1] text-base font-medium">The tax you need to pay*</p>
-          <p className="text-[--primary-dark-blue] text-2xl font-bold text-center">$ 812.5</p>
+          <p className="text-[--gray-1] text-base font-medium">
+            The tax you need to pay*
+          </p>
+          <p className="text-[--primary-dark-blue] text-2xl font-bold text-center">
+            $ 812.5
+          </p>
         </div>
       </div>
     </div>

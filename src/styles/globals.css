@@ -17,6 +17,17 @@
 .signIn-btn {
   border: 1px solid #0052FE;
 }
+.custom-select {
+  appearance: none; /* Remove default appearance */
+  background-image: url('../assets/arrow-icon.svg');
+  background-position: right; /* Position your icon to the right */
+  background-repeat: no-repeat; /* Prevent repeating the icon */
+  padding-right: 30px; /* Adjust the padding on the right to make space for the custom icon */
+}
+.selected_btn {
+  border: 2px solid var(--primary-blue, #0052FE);
+  background: rgba(0, 82, 254, 0.06);
+}
 
 .navbar {
   border-bottom: 1px solid #DEDFE2;
