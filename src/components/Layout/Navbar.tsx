@@ -6,7 +6,7 @@ const Navbar = () => {
   const Navlinks = ['Features', 'Exchanges', 'How it Works?', 'Blog', 'About us']
 
   return (
-    <div className='bg-white px-6 md:px-[60px] py-[22px] flex items-center justify-between navbar'>
+    <div className='bg-white px-6 md:px-[60px] py-[22px] flex items-center justify-between navbar shadow-mobile md:shadow-desktop'>
       <Image 
       alt='logo'
       src={Logo}

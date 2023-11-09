@@ -16,6 +16,10 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        'mobile': '0px 1px 8px 0px rgba(19, 40, 56, 0.08)',
+        'desktop': '0px 0px 12px 0px rgba(16, 38, 73, 0.06)'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
