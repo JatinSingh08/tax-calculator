@@ -16,7 +16,7 @@ const FAQs = () => {
       <Accordion
         type="single"
         collapsible
-        className="flex flex-col gap-6 mt-6 items-center justify-center w-full"
+        className="flex flex-col gap-4 mt-6 items-center justify-center w-full"
       >
         {Faqs.map((faq: any) => {
           return (
