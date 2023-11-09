@@ -21,7 +21,7 @@ const TaxCalculator = () => {
   
   return (
     <div className="p-[17px] w-full lg:pl-[79px] lg:pt-[35px] lg:pr-[73px] lg:pb-[48px] border border-[#DEE1E6] md:border-none  bg-white rounded-xl md:rounded-2xl flex flex-col items-center justify-center">
-      <p className="text-[--gray-1] text-center text-2xl md:text-[40px] font-bold leading-[34px]">
+      <p className="text-[--gray-1] text-center text-2xl md:text-[32px] lg:text-[40px] font-bold leading-[34px]">
         Free Crypto Tax Calculator - Australia
       </p>
 
