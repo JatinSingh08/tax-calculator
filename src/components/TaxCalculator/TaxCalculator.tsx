@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CheckIcon from "@/assets/check-icon.svg";
 import useTaxCalculation from "@/lib/useTaxCalculation";
+import Australia from "@/assets/australia-flag.svg";
 
 const TaxCalculator = () => {
   const [inputs, setInputs] = useState({
@@ -19,7 +20,7 @@ const TaxCalculator = () => {
   
   
   return (
-    <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] border border-[#DEE1E6] md:border-none  bg-white rounded-xl md:rounded-2xl flex flex-col items-center justify-center">
+    <div className="p-[17px] w-full lg:pl-[79px] lg:pt-[35px] lg:pr-[73px] lg:pb-[48px] border border-[#DEE1E6] md:border-none  bg-white rounded-xl md:rounded-2xl flex flex-col items-center justify-center">
       <p className="text-[--gray-1] text-center text-2xl md:text-[40px] font-bold leading-[34px]">
         Free Crypto Tax Calculator - Australia
       </p>
@@ -53,7 +54,9 @@ const TaxCalculator = () => {
             id="country"
             className="py-[17px] text-start outline-none px-4 w-full rounded-[8px] bg-[#EFF2F5] cursor-pointer text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
           >
-            <option value="Australia">🌍 Australia</option>
+            <option value="Australia">
+               🌍 Australia
+              </option>
           </select>
         </div>
       </div>
@@ -223,12 +226,13 @@ const TaxCalculator = () => {
             <option value="180001+">$180,001+</option>
           </select>
         </div>
-        <div className="flex-col flex items-start justify-center mt-0 md:mt-8 gap-3 w-full">
+        <div className="flex flex-row md:flex-col items-start justify-start mt-0 md:mt-8 gap-3 w-full">
           <label
             htmlFor="years"
-            className="text-[--gray-1] text-[15px] font-normal leading-6 text-start"
+            className="text-[--gray-1] text-[15px] flex font-normal leading-6 text-start"
           >
             Tax Rate
+            <span className="block md:hidden">{":"}</span>
           </label>
           <p className="text-[--gray-1] text-[15px] font-normal leading-6">
             {taxRate?.tax}
