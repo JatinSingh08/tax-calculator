@@ -23,13 +23,13 @@ const Navbar = () => {
         className='w-[28px] h-[28px] object-contain block md:hidden'
         />
       </div>
-      <div className='hidden md:flex items-center justify-center gap-[69px] '>
-        <ul className='flex items-center justify-center gap-8'>
+      <div className='hidden md:flex items-center justify-center gap-[40px] md:gap-[69px] '>
+        <ul className='flex items-center justify-center gap-4 md:gap-8'>
           {
-            Navlinks.map((link, index) => <li key={index} className='text-[--gray-1] text-base font-semibold tracking-[-0.16px]'>{link}</li>)
+            Navlinks.map((link, index) => <li key={index} className='text-[--gray-1] text-[--14px] font-semibold tracking-[-0.16px]'>{link}</li>)
           }
         </ul>
-        <button className='rounded-[4px] text-[--signIn-btn] signIn-btn px-10 py-2 flex items-center justify-center text-base font-semibold tracking-[-0.16px]'>Sign In</button>
+        <button className='rounded-[4px] text-[--signIn-btn] signIn-btn px-[40px] py-[8px] flex items-center justify-center text-[--14px] font-semibold tracking-[-0.16px]'>Sign In</button>
       </div>
     </div>
   )

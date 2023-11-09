@@ -12,6 +12,131 @@
   --green-1: #0FBA83;
   --primary-dark-blue: #0141CF;
   font-family: 'Inter', 'sans-serif';
+
+
+   /* VW SIZES FOR BASE SIZE 360 */
+   --baseSize: calc(100 / 1200);
+
+   --0px: calc(var(--baseSize) * 0vw);
+   --1px: calc(var(--baseSize) * 1vw);
+   --2px: calc(var(--baseSize) * 2vw);
+   --3px: calc(var(--baseSize) * 3vw);
+   --4px: calc(var(--baseSize) * 4vw);
+   --6px: calc(var(--baseSize) * 6vw);
+   --7px: calc(var(--baseSize) * 7vw);
+   --8px: calc(var(--baseSize) * 8vw);
+   --9px: calc(var(--baseSize) * 9vw);
+   --10px: calc(var(--baseSize) * 10vw);
+   --11px: calc(var(--baseSize) * 11vw);
+   --12px: calc(var(--baseSize) * 12vw);
+   --13px: calc(var(--baseSize) * 13vw);
+   --14px: calc(var(--baseSize) * 14vw);
+   --15px: calc(var(--baseSize) * 15vw);
+   --16px: calc(var(--baseSize) * 16vw);
+   --17px: calc(var(--baseSize) * 17vw);
+   --18px: calc(var(--baseSize) * 18vw);
+   --18_6px: calc(var(--baseSize) * 18.6vw);
+   --19px: calc(var(--baseSize) * 19vw);
+   --20px: calc(var(--baseSize) * 20vw);
+   --21px: calc(var(--baseSize) * 21vw);
+   --21_5px: calc(var(--baseSize) * 21.5vw);
+   --22px: calc(var(--baseSize) * 22vw);
+   --24px: calc(var(--baseSize) * 24vw);
+   --26px: calc(var(--baseSize) * 26vw);
+   --28px: calc(var(--baseSize) * 28vw);
+   --30px: calc(var(--baseSize) * 30vw);
+   --32px: calc(var(--baseSize) * 32vw);
+   --33px: calc(var(--baseSize) * 33vw);
+   --34px: calc(var(--baseSize) * 34vw);
+   --36px: calc(var(--baseSize) * 36vw);
+   --38px: calc(var(--baseSize) * 38vw);
+   --38_5px: calc(var(--baseSize) * 38.5vw);
+   --35px: calc(var(--baseSize) * 35vw);
+   --40px: calc(var(--baseSize) * 40vw);
+   --42px: calc(var(--baseSize) * 42vw);
+   --44px: calc(var(--baseSize) * 44vw);
+   --48px: calc(var(--baseSize) * 48vw);
+   --45px: calc(var(--baseSize) * 45vw);
+   --46px: calc(var(--baseSize) * 46vw);
+   --48px: calc(var(--baseSize) * 48vw);
+   --51px: calc(var(--baseSize) * 51vw);
+   --56px: calc(var(--baseSize) * 56vw);
+   --58px: calc(var(--baseSize) * 58vw);
+   --59px: calc(var(--baseSize) * 59vw);
+   --60px: calc(var(--baseSize) * 60vw);
+   --63px: calc(var(--baseSize) * 63vw);
+   --64px: calc(var(--baseSize) * 64vw);
+   --66px: calc(var(--baseSize) * 66vw);
+   --67_882px: calc(var(--baseSize) * 67.882vw);
+   --67px: calc(var(--baseSize) * 67vw);
+   --72px: calc(var(--baseSize) * 72vw);
+   --75px: calc(var(--baseSize) * 75vw);
+   --80px: calc(var(--baseSize) * 80vw);
+   --82px: calc(var(--baseSize) * 82vw);
+   --85px: calc(var(--baseSize) * 85vw);
+   --88px: calc(var(--baseSize) * 88vw);
+   --105px: calc(var(--baseSize) * 105vw);
+   --111px: calc(var(--baseSize) * 111vw);
+   --112px: calc(var(--baseSize) * 112vw);
+   --116px: calc(var(--baseSize) * 116vw);
+   --124px: calc(var(--baseSize) * 124vw);
+   --129px: calc(var(--baseSize) * 129vw);
+   --140px: calc(var(--baseSize) * 140vw);
+   --144px: calc(var(--baseSize) * 144vw);
+   --146px: calc(var(--baseSize) * 146vw);
+   --148px: calc(var(--baseSize) * 148vw);
+   --154px: calc(var(--baseSize) * 154vw);
+   --158px: calc(var(--baseSize) * 158vw);
+   --160px: calc(var(--baseSize) * 160vw);
+   --163px: calc(var(--baseSize) * 163vw);
+   --168px: calc(var(--baseSize) * 168vw);
+   --120px: calc(var(--baseSize) * 120vw);
+   --175px: calc(var(--baseSize) * 175vw);
+   --176px: calc(var(--baseSize) * 176vw);
+   --182px: calc(var(--baseSize) * 182vw);
+   --184px: calc(var(--baseSize) * 184vw);
+   --188px: calc(var(--baseSize) * 188vw);
+   --196px: calc(var(--baseSize) * 196vw);
+   --192px: calc(var(--baseSize) * 192vw);
+   --200px: calc(var(--baseSize) * 200vw);
+   --206px: calc(var(--baseSize) * 206vw);
+   --217px: calc(var(--baseSize) * 217vw);
+   --224px: calc(var(--baseSize) * 224vw);
+   --228px: calc(var(--baseSize) * 228vw);
+   --232px: calc(var(--baseSize) * 232vw);
+   --240px: calc(var(--baseSize) * 240vw);
+   --253px: calc(var(--baseSize) * 253vw);
+   --254px: calc(var(--baseSize) * 254vw);
+   --256px: calc(var(--baseSize) * 256vw);
+   --267px: calc(var(--baseSize) * 267vw);
+   --262px: calc(var(--baseSize) * 262vw);
+   --264px: calc(var(--baseSize) * 264vw);
+   --280px: calc(var(--baseSize) * 280vw);
+   --294px: calc(var(--baseSize) * 294vw);
+   --288px: calc(var(--baseSize) * 288vw);
+   --300px: calc(var(--baseSize) * 300vw);
+   --312px: calc(var(--baseSize) * 312vw);
+   --320px: calc(var(--baseSize) * 320vw);
+   --322px: calc(var(--baseSize) * 322vw);
+   --328px: calc(var(--baseSize) * 328vw);
+   --338px: calc(var(--baseSize) * 338vw);
+   --344px: calc(var(--baseSize) * 344vw);
+   --342px: calc(var(--baseSize) * 342vw);
+   --360px: calc(var(--baseSize) * 360vw);
+   --368px: calc(var(--baseSize) * 368vw);
+   --400px: calc(var(--baseSize) * 400vw);
+   --500px: calc(var(--baseSize) * 500vw);
+   --416px: calc(var(--baseSize) * 416vw);
+   --640px: calc(var(--baseSize) * 640vw);
+   --682px: calc(var(--baseSize) * 682vw);
+   --720px: calc(var(--baseSize) * 720vw);
+   --752px: calc(var(--baseSize) * 752vw);
+   --760px: calc(var(--baseSize) * 760vw);
+   --762px: calc(var(--baseSize) * 762vw);
+   --788px: calc(var(--baseSize) * 788vw);
+   --1200px: calc(var(--baseSize) * 1200vw);
+
+
 }
 
 .signIn-btn {
@@ -36,4 +161,9 @@
 }
 .border-bottom {
   border-bottom: 1px solid rgba(201, 207, 221, 0.60);
+}
+.calculator-border {
+  border-radius: 12px;
+  border: 1px solid #DEE1E6;
+  background: #FFF;
 }

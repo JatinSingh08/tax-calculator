@@ -11,7 +11,6 @@ const TaxCalculator = () => {
     annual_income: "0-18200",
     term_selected: "short_term",
   });
-
   const { capitalGainsAmount, discount, netCapitalGains, taxRate, taxToBePaid } = useTaxCalculation(inputs);
   const formattedNetCapitalGains = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -20,17 +19,17 @@ const TaxCalculator = () => {
   
   
   return (
-    <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] bg-white rounded-2xl flex flex-col items-center justify-center">
+    <div className="p-[17px] w-full md:pl-[79px] md:pt-[35px] md:pr-[73px] md:pb-[48px] border border-[#DEE1E6] md:border-none  bg-white rounded-xl md:rounded-2xl flex flex-col items-center justify-center">
       <p className="text-[--gray-1] text-center text-2xl md:text-[40px] font-bold leading-[34px]">
         Free Crypto Tax Calculator - Australia
       </p>
 
       {/* Financial Yeary & Country  */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full mt-10 gap-10">
+      <div className="flex  items-center justify-between w-full mt-10 gap-5 md:gap-10">
         <div className="flex-col md:flex-row flex items-start md:items-center justify-center gap-3 w-full">
           <label
             htmlFor="years"
-            className="text-[--gray-1] text-[15px] font-normal leading-6"
+            className="text-[--gray-1] text-[15px] font-normal leading-6 whitespace-nowrap"
           >
             Financial Year
           </label>
@@ -63,7 +62,7 @@ const TaxCalculator = () => {
       <div className="w-full h-[1px] bg-[--border] my-[28px]"></div>
 
       {/* Purchase Price & Sales Price */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10">
         <div className="flex-col flex items-start justify-center gap-3 w-full">
           <label
             htmlFor="years"
@@ -115,7 +114,7 @@ const TaxCalculator = () => {
       </div>
 
       {/* Expenses & Term plan  */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
         <div className="flex-col flex items-start justify-center gap-3 w-full">
           <label
             htmlFor="years"
@@ -198,7 +197,7 @@ const TaxCalculator = () => {
       </div>
 
       {/* Annaul Income & Tax Rate  */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-[36px] md:mt-[28px]">
         <div className="flex-col flex items-start justify-center gap-3 w-full">
           <label
             htmlFor="years"
@@ -224,7 +223,7 @@ const TaxCalculator = () => {
             <option value="180001+">$180,001+</option>
           </select>
         </div>
-        <div className="flex-col flex items-start justify-center mt-8 gap-3 w-full">
+        <div className="flex-col flex items-start justify-center mt-0 md:mt-8 gap-3 w-full">
           <label
             htmlFor="years"
             className="text-[--gray-1] text-[15px] font-normal leading-6 text-start"
@@ -240,7 +239,7 @@ const TaxCalculator = () => {
       {/* Gain Amount & Long term gains  */}
       {
         inputs.term_selected === "long_term" &&
-      (  <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+      (  <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
           <div className="flex-col flex items-start justify-center gap-3 w-full">
             <label
               htmlFor="years"
@@ -284,7 +283,7 @@ const TaxCalculator = () => {
       }
 
       {/* Capital gains & Tax results */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-10 mt-[28px]">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
         <div className="flex-col flex items-center justify-center w-full bg-[#EBF9F4] h-[97px] px-2 rounded-[8px] gap-2">
           <p className="text-[--gray-1] text-base font-medium">
             Net Capital gains tax amount
@@ -298,7 +297,7 @@ const TaxCalculator = () => {
             The tax you need to pay*
           </p>
           <p className="text-[--primary-dark-blue] text-2xl font-bold text-center">
-            $ {taxToBePaid}
+            $ {taxToBePaid.toFixed(2)}
           </p>
         </div>
       </div>
