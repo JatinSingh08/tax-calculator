@@ -20,6 +20,14 @@ module.exports = {
         'mobile': '0px 1px 8px 0px rgba(19, 40, 56, 0.08)',
         'desktop': '0px 0px 12px 0px rgba(16, 38, 73, 0.06)'
       },
+      screens:{
+        'sm-2':'400px',
+      },
+      gridTemplateColumns:{
+        'footer':'repeat(auto-fit,minmax(220px,1fr))',
+        'footer-mobile':'repeat(auto-fit,minmax(150px,1fr))',
+
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
