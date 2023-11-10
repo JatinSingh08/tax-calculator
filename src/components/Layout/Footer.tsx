@@ -91,7 +91,7 @@ const Footer = () => {
                     <li>About Us</li>
                     <li>Backed by</li>
                     <li>Media and Press</li>
-                    <li className="flex gap-[11.94px] items-center">Careers<span className="leading-[13px] font-semibold rounded-[2px] text-[11px] pt-[3px] pl-[8px] pr-[9.97px]  pb-[4.19px] bg-[#2997F980]">We're hiring</span></li>
+                    <li className="flex gap-[11.94px] items-center">Careers<span className="leading-[13px] font-semibold rounded-[2px] text-[11px] pt-[3px] pl-[8px] pr-[9.97px]  pb-[4.19px] bg-[#2997F980]">{"We're hiring"}</span></li>
                     <li>Security</li>
                     <li>Refund Policy</li>
                     <li>Brand Assets</li>
