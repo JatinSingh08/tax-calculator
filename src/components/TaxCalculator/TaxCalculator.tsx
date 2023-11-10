@@ -55,7 +55,7 @@ const TaxCalculator = () => {
               name="fy"
               id="years"
               className={cn(
-                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[14px] sm-2:text-[18px] font-medium flex items-center justify-between "
               )}
             >
               <SelectValue placeholder="FY 2023-24" />
@@ -78,7 +78,7 @@ const TaxCalculator = () => {
               name="country"
               id="country"
               className={cn(
-                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[14px] sm-2:text-[18px]  font-medium flex items-center justify-between "
               )}
             >
               <SelectValue placeholder="🌍 Australia" />
@@ -263,7 +263,7 @@ const TaxCalculator = () => {
               name="fy"
               id="years"
               className={cn(
-                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[14px] sm-2:text-[18px] font-medium flex items-center justify-between "
               )}
             >
               <SelectValue placeholder="Select your annual income" />
