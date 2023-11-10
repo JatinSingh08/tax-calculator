@@ -2,6 +2,16 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CheckIcon from "@/assets/check-icon.svg";
 import useTaxCalculation from "@/lib/useTaxCalculation";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+
 import Australia from "@/assets/australia-flag.svg";
 
 const TaxCalculator = () => {
@@ -12,13 +22,18 @@ const TaxCalculator = () => {
     annual_income: "0-18200",
     term_selected: "short_term",
   });
-  const { capitalGainsAmount, discount, netCapitalGains, taxRate, taxToBePaid } = useTaxCalculation(inputs);
-  const formattedNetCapitalGains = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const {
+    capitalGainsAmount,
+    discount,
+    netCapitalGains,
+    taxRate,
+    taxToBePaid,
+  } = useTaxCalculation(inputs);
+  const formattedNetCapitalGains = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
   }).format(netCapitalGains);
-  
-  
+
   return (
     <div className="p-[17px] w-full lg:pl-[79px] lg:pt-[35px] lg:pr-[73px] lg:pb-[48px] border border-[#DEE1E6] md:border-none  bg-white rounded-xl md:rounded-2xl flex flex-col items-center justify-center">
       <p className="text-[--gray-1] text-center text-2xl md:text-[32px] lg:text-[40px] font-bold leading-[34px]">
@@ -34,13 +49,21 @@ const TaxCalculator = () => {
           >
             Financial Year
           </label>
-          <select
-            name="fy"
-            id="years"
-            className="py-[17px] outline-none w-full text-start px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-base md:text-[18px] font-medium flex items-center justify-center "
-          >
-            <option value="24">FY 2023-24</option>
-          </select>
+
+          <Select>
+            <SelectTrigger
+              name="fy"
+              id="years"
+              className={cn(
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+              )}
+            >
+              <SelectValue placeholder="FY 2023-24" />
+            </SelectTrigger>
+            <SelectContent className="rounded-[8px]">
+              <SelectItem value="24">FY 2023-24</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex-col md:flex-row flex items-start md:items-center justify-center gap-3 w-full">
           <label
@@ -49,15 +72,21 @@ const TaxCalculator = () => {
           >
             Country
           </label>
-          <select
-            name="country"
-            id="country"
-            className="py-[17px] text-start outline-none px-4 w-full rounded-[8px] bg-[#EFF2F5] cursor-pointer text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
-          >
-            <option value="Australia">
-               🌍 Australia
-              </option>
-          </select>
+
+          <Select>
+            <SelectTrigger
+              name="country"
+              id="country"
+              className={cn(
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+              )}
+            >
+              <SelectValue placeholder="🌍 Australia" />
+            </SelectTrigger>
+            <SelectContent className="rounded-[8px]">
+              <SelectItem value="Australia">🌍 Australia</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
@@ -167,11 +196,17 @@ const TaxCalculator = () => {
                 Short Term
                 {inputs.term_selected === "short_term" && (
                   <span>
-                    <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                    <Image
+                      alt="check_icon"
+                      src={CheckIcon}
+                      className="w-6 h-6"
+                    />
                   </span>
                 )}
               </button>
-              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">{"< 12 months"}</p>
+              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">
+                {"< 12 months"}
+              </p>
             </div>
             <div className="w-full">
               <button
@@ -189,18 +224,24 @@ const TaxCalculator = () => {
                 Long Term
                 {inputs.term_selected === "long_term" && (
                   <span>
-                    <Image alt="check_icon" src={CheckIcon} className="w-6 h-6" />
+                    <Image
+                      alt="check_icon"
+                      src={CheckIcon}
+                      className="w-6 h-6"
+                    />
                   </span>
                 )}
               </button>
-              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">{"> 12 months"}</p>
+              <p className="text-[--gray-2] absolute text-[15px] font-medium leading-6 mt-1">
+                {"> 12 months"}
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Annaul Income & Tax Rate  */}
-      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-[36px] md:mt-[28px]">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-[44px] md:mt-[28px]">
         <div className="flex-col flex items-start justify-center gap-3 w-full">
           <label
             htmlFor="years"
@@ -208,42 +249,51 @@ const TaxCalculator = () => {
           >
             Select your Annual Income
           </label>
-          <select
-            name="fy"
-            id="years"
-            className="py-[17px] text-start px-4 outline-none w-full rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1]  text-base md:text-[18px] font-medium flex items-center justify-center"
-            onChange={(e) =>
+
+          <Select
+            onValueChange={(e) => {
+              console.log("onChange triggered:", e);
               setInputs((prevInputs) => ({
                 ...prevInputs,
-                annual_income: e.target.value,
-              }))
-            }
+                annual_income: e,
+              }));
+            }}
           >
-            <option value="0-18200">$0 - $18,200</option>
-            <option value="18201-45000">$18,201 - $45,000</option>
-            <option value="45001-120000">$45,001 - $120,000</option>
-            <option value="120001-180000">$120,001 - $180,000</option>
-            <option value="180001+">$180,001+</option>
-          </select>
+            <SelectTrigger
+              name="fy"
+              id="years"
+              className={cn(
+                "py-[17px] outline-none w-full text-start px-2 sm-2:px-4 rounded-[8px] cursor-pointer bg-[#EFF2F5] text-[--gray-1] text-[12px] sm-2:text-[16px]  font-medium flex items-center justify-between "
+              )}
+            >
+              <SelectValue placeholder="Select your annual income" />
+            </SelectTrigger>
+            <SelectContent className="rounded-[8px]">
+              <SelectItem value="0-18200">$0 - $18,200</SelectItem>
+              <SelectItem value="18201-45000">$18,201 - $45,000</SelectItem>
+              <SelectItem value="45001-120000">$45,001 - $120,000</SelectItem>
+              <SelectItem value="120001-180000">$120,001 - $180,000</SelectItem>
+              <SelectItem value="180001+">$180,001+</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex flex-row md:flex-col items-start justify-start mt-0 md:mt-8 gap-3 w-full">
           <label
             htmlFor="years"
-            className="text-[--gray-1] text-[15px] flex font-normal leading-6 text-start"
+            className="text-[--gray-1] text-[12px] sm-2:text[14px] sm:text-[15px] flex font-normal leading-6 text-start"
           >
             Tax Rate
             <span className="block md:hidden">{":"}</span>
           </label>
-          <p className="text-[--gray-1] text-[15px] font-normal leading-6">
+          <p className="text-[--gray-1] text-[12px] sm-2:text-[14px] sm:text-[15px] font-normal leading-6">
             {taxRate?.tax}
           </p>
         </div>
       </div>
 
       {/* Gain Amount & Long term gains  */}
-      {
-        inputs.term_selected === "long_term" &&
-      (  <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
+      {inputs.term_selected === "long_term" && (
+        <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
           <div className="flex-col flex items-start justify-center gap-3 w-full">
             <label
               htmlFor="years"
@@ -282,9 +332,8 @@ const TaxCalculator = () => {
               />
             </div>
           </div>
-        </div>)
-        
-      }
+        </div>
+      )}
 
       {/* Capital gains & Tax results */}
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-5 md:gap-10 mt-5 md:mt-[28px]">
