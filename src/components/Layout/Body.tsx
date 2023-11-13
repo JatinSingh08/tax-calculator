@@ -5,6 +5,7 @@ import FreeBanner from '@/assets/freeBanner.svg';
 import FAQs from '../Faq/FAQs';
 import SubscribeBanner from '@/assets/subscribe.svg';
 import ThanksBanner from '@/assets/thanksBanner.svg';
+import SignupAdv from '../SignupAdv/SignupAdv';
 
 const Body = () => {
   return (
@@ -15,14 +16,16 @@ const Body = () => {
           <TaxCalculator />
           <FAQs />
         </div>
-        <div className='ml-5 w-auto mt-[68px] md:mt-0'>
+        <div className='ml-5 w-auto  md:mt-0'>
           <Image 
           alt='freeBanner'
           width={200}
           height={200}
           src={FreeBanner}
           className='hidden w-full md:flex'
+          draggable='false'
           />
+          {/* <SignupAdv /> */}
         </div>
       </div>
 
@@ -34,6 +37,7 @@ const Body = () => {
               height={200}
               src={SubscribeBanner}
               className='h-[288px] hidden md:flex w-full mx-auto object-contain'
+              draggable='false'
           />
         </div>
 
@@ -44,6 +48,7 @@ const Body = () => {
               height={200}
               src={ThanksBanner}
               className=' flex md:hidden w-full mx-auto object-contain'
+              draggable='false'
           />
         </div>
     </div>
