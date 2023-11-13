@@ -20,7 +20,7 @@ const useTaxCalculation = (inputs: inputs) => {
     discount = 0.5 * capitalGainsAmount; // 50% discount
   }
 
-  const netCapitalGains = inputs.term_selected === "long_term" ? capitalGainsAmount - discount : capitalGainsAmount;
+  const netCapitalGains = inputs.term_selected === "long_term" ? Number(capitalGainsAmount) - Number(discount) : Number(capitalGainsAmount);
   const taxRate = taxSlabs.find((tax: Tax) => tax.income === inputs.annual_income);
 
   let taxToBePaid = 0;
