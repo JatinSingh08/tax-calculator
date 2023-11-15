@@ -23,23 +23,14 @@ const Body = () => {
           width={200}
           height={200}
           src={FreeBanner}
-          className='hidden w-full md:flex'
+          className='hidden w-full md:flex cursor-pointer'
           draggable='false'
           />
-          {/* <SignupAdv /> */}
         </div>
       </div>
 
         {/* Subscribe Banner  */}
         <div className='w-full'>
-          {/* <Image 
-              alt='SubscribeBanner'
-              width={200}
-              height={200}
-              src={SubscribeBanner}
-              className='h-[288px] hidden md:flex w-full mx-auto object-contain'
-              draggable='false'
-          /> */}
           <Subscribe />
         </div>
 
@@ -49,7 +40,7 @@ const Body = () => {
               width={200}
               height={200}
               src={ThanksBanner}
-              className=' flex md:hidden w-full mx-auto object-contain'
+              className=' flex md:hidden w-full mx-auto object-contain cursor-pointer'
               draggable='false'
           />
         </div>
