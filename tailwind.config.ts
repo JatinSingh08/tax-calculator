@@ -22,6 +22,9 @@ module.exports = {
       },
       screens:{
         'sm-2':'400px',
+        "xl":"1300px",
+        'lg-2':"1200px",
+
       },
       gridTemplateColumns:{
         'footer':'repeat(auto-fit,minmax(220px,1fr))',
@@ -29,6 +32,9 @@ module.exports = {
 
       },
       colors: {
+        "grey1":"#0F1629",
+        "grey2":"#3E424A",
+        "green1":"#0FBA83",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
